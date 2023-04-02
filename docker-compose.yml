@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "uvicorn main:app --reload --host 0.0.0.0 --port 8000"
+    volumes:
+      - "./app:/app"
+    ports:
+      - "8000:8000"
+    environment:
+      POSTGRES_NAME: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: postgres
+    restart: always
+    depends_on:
+      - postgres
+    networks:
+      - ig_webapp
+
+  postgres:
+    image: postgres:14-alpine
+    volumes:
+      - "./.data/postgres:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - ig_webapp
+
+networks:
+  ig_webapp:

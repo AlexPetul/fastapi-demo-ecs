@@ -1,0 +1,22 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - deploy
+
+build_push:
+  stage: build
+  script:
+    - sh ./ci.sh
+  only:
+    - master
+
+deploy:
+  stage: deploy
+  script:
+    - make aws-deploy
+  only:
+    - master

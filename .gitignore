@@ -1,0 +1,16 @@
+/.data
+
+# Ignore everything in .idea
+**/.idea
+**/.nvmrc
+
+**/.env
+
+**/*.mo
+**/*.pyo
+**/*.pyc
+**/__pycache__
+**/venv/
+**/.venv
+**/.cache/
+**/.local/
