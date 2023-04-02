@@ -1,5 +1,5 @@
 ECS_CLUSTER = fastapi-demo-cluster
-ECS_SERVICE = fastapi-main-service
+ECS_SERVICE = fastapi-demo-main-service
 ECS_TASK_DEFINITION = fastapi-demo-task-definition-family
 ECR_HOST = 353586219743.dkr.ecr.us-east-1.amazonaws.com
 
